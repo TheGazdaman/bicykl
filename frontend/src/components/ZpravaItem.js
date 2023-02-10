@@ -23,7 +23,6 @@ export default class ZpravaItem extends Component {
     );
 
     Promise.all([getImageUrl, getAuthor]).then((res) => {
-      console.log("gutenTag", res);
       this.setState({
         imgUrl: res[0].data.media_details.sizes.full.source_url,
         author: res[1].data.author,

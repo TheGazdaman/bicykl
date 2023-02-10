@@ -12,6 +12,12 @@ class App extends Component {
     isLoaded: false,
   };
 
+  handleZpravaClick = zprava => {
+    this.setState({
+      selectedZprava: zprava
+    })
+    console.log("zpravaID", zprava.id)
+  }
   componentDidMount() {
     axios
       .get("http://localhost:8000/wp-json/wp/v2/zpravy")
@@ -24,8 +30,9 @@ class App extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    console.log("hello", this.state);
     const { zpravy, isLoaded } = this.state;
+        console.log("hello", this.state, "isLoaded", isLoaded);
+
     return (
       <BrowserRouter>
         <NavBar isLoaded={isLoaded} />
@@ -34,13 +41,13 @@ class App extends Component {
             exact
             path="/"
             element={
-              <Zpravy zpravy={zpravy} isLoaded={isLoaded} key={zpravy.id} />
+              <Zpravy zpravy={zpravy} isLoaded={isLoaded} key={zpravy.id}/>
             }
           />
           <Route
             exact
             path="/zpravy/:id"
-            element={<ZpravaPage zpravy={zpravy} isLoaded={isLoaded} />}
+            element={<ZpravaPage zpravy={zpravy} id={zpravy.id} isLoaded={isLoaded} />}
           />
         </Routes>
       </BrowserRouter>
