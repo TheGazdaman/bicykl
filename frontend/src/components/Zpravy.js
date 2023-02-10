@@ -1,14 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import ZpravaItem from "./ZpravaItem";
 
 function Zpravy(props) {
   const { zpravy, isLoaded } = props;
+  console.log("bla", zpravy)
 
   if (isLoaded) {
     return (
-      <div>
-        {zpravy.map((zprava) => (
-          <ZpravaItem zprava={zprava} key={zprava.id} />
+      <div className="zpravy-box">
+        {zpravy.map((zprava, i) => (
+          <ZpravaItem zprava={zprava} id={zprava.id} isLoaded={isLoaded} />
         ))}
       </div>
     );

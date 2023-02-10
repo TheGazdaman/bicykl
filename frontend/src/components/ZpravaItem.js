@@ -38,18 +38,22 @@ export default class ZpravaItem extends Component {
 
     if (isLoaded) {
       return (
-        <>
-          <Link to={`/zpravy/${id}`}>
-            <h2 style={{ marginBottom: "0" }}>{title.rendered}</h2>
+        <div className="zprava-item">
+          
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/zpravy/${id}`}>
+              <div className="zprava-link">{title.rendered}</div>
             </Link>
-            <small>
+            
+            <div className="zprava-box">
+            <img className="zprava-image" src={imgUrl} alt={title.rendered} />
+            <div className="zprava-text" dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
+            
+          </div>
+          <small>
               Review by <strong>{author}</strong>
             </small>
-            <img style={{ width: "50%" }} src={imgUrl} alt={title.rendered} />
-            <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
-         
           <hr />
-        </>
+        </div>
       );
     }
 

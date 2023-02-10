@@ -4,6 +4,7 @@ import Zpravy from "./components/Zpravy";
 import ZpravaPage from "./components/ZpravaPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import { NavBar } from "./components/NavBar";
 
 class App extends Component {
   state = {
@@ -27,15 +28,20 @@ class App extends Component {
     const { zpravy, isLoaded } = this.state;
     return (
       <BrowserRouter>
+        <NavBar isLoaded={isLoaded} />
         <Routes>
-          <>
-            <Route
-              exact
-              path="/"
-              element={<Zpravy zpravy={zpravy} isLoaded={isLoaded} />}
-            />
-            <Route exact path="/zpravy/:id" element={<ZpravaPage zpravy={zpravy}/>} />
-          </>
+          <Route
+            exact
+            path="/"
+            element={
+              <Zpravy zpravy={zpravy} isLoaded={isLoaded} key={zpravy.id} />
+            }
+          />
+          <Route
+            exact
+            path="/zpravy/:id"
+            element={<ZpravaPage zpravy={zpravy} isLoaded={isLoaded} />}
+          />
         </Routes>
       </BrowserRouter>
     );
