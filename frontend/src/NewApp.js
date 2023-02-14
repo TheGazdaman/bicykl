@@ -17,10 +17,6 @@ const NewApp = () => {
       .catch((err) => console.log(err));
   }, [isLoading]);
 
-  propTypes = {
-    zprava: PropTypes.object.isRequired,
-  };
-  const { featured_media, author } = this.props.zprava;
 
   useEffect(() => {
     fetch()

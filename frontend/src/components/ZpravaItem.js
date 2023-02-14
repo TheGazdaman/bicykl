@@ -28,12 +28,16 @@ export default class ZpravaItem extends Component {
         author: res[1].data.author,
         isLoaded: true,
       });
+      console.log("heyhou", author)
     });
   }
 
   render() {
     const { id, title, excerpt } = this.props.zprava;
     const { author, imgUrl, isLoaded } = this.state;
+
+    console.log("image", imgUrl)
+
 
     if (isLoaded) {
       return (

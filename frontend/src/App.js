@@ -31,7 +31,6 @@ class App extends Component {
   }
   render() {
     const { zpravy, isLoaded } = this.state;
-        console.log("hello", this.state, "isLoaded", isLoaded);
 
     return (
       <BrowserRouter>
