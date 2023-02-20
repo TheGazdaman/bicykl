@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -27,8 +26,8 @@ export default function ZpravaPage(props) {
     zpravy.map((zprava) => {
       if (zprava.id == id) {
         author = zprava.author;
-        console.log("author", author);
       } else {
+        console.log("Not using author");
       }
     });
   };
@@ -44,23 +43,24 @@ export default function ZpravaPage(props) {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [isLoading]);
+  }, [ featuredMedia, isLoading ]);
 
   if (isLoaded) {
     return (
       <>
-        <Link to="/">Go back</Link>
         <hr />
-        <h1>{detailZpravy.title.rendered}</h1>
-        <div>{detailZpravy.featured_media}</div>
-        <img
-          className="zprava-image"
-          src={imageUrl.source_url}
-          alt={imageUrl.rendered}
-        />
-        <div
-          dangerouslySetInnerHTML={{ __html: detailZpravy.content.rendered }}
-        ></div>
+        <div className="zprava-body">
+          <Link to="/">Go back</Link>
+          <div className="zprava-header">{detailZpravy.title.rendered}</div>
+          <img
+            className="zpravaPageImg"
+            src={imageUrl.source_url}
+            alt={imageUrl.rendered}
+          />
+          <div
+            dangerouslySetInnerHTML={{ __html: detailZpravy.content.rendered }}
+          ></div>
+        </div>
       </>
     );
   }

@@ -1,15 +1,22 @@
 .zprava-item {
+  display: flex;
+}
+
+.image-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .zprava-box {
   display: flex;
+  flex-direction: column;
 }
 
 .zprava-image {
   height: auto; 
   width: auto; 
-  max-width: 150px; 
-  max-height: 100px;
+  max-width: 200px; 
+  max-height: 200px;
 }
 
 .zprava-link {
@@ -20,6 +27,7 @@
   font-size: 16px;
   text-decoration: none;
   padding-bottom: 5px;
+  margin: 0 10px;
 }
 
 .zprava-text {

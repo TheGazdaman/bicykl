@@ -1,0 +1,22 @@
+.zprava-body {
+  display: flex;
+  flex-direction: column;
+  width: 44vw;
+  margin: 20px 28vw 0 28vw;
+}
+
+.zprava-header {
+  font-family: "aileron", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: .2px;
+  font-size: 30px;
+  padding: 10 0 10 0;
+}
+
+.zpravaPageImg {
+  height: auto; 
+  width: auto; 
+  max-width: 50vw; 
+  max-height: 50vw;
+}

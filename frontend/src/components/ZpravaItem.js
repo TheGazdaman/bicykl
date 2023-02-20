@@ -28,35 +28,42 @@ export default class ZpravaItem extends Component {
         author: res[1].data.author,
         isLoaded: true,
       });
-      console.log("heyhou", author)
+      console.log("heyhou", author);
     });
   }
 
   render() {
-    const { id, title, excerpt } = this.props.zprava;
+    const { id, title, excerpt, i } = this.props.zprava;
     const { author, imgUrl, isLoaded } = this.state;
-
-    console.log("image", imgUrl)
-
 
     if (isLoaded) {
       return (
-        <div className="zprava-item">
-          
-            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/zpravy/${id}`}>
-              <div className="zprava-link">{title.rendered}</div>
-            </Link>
-            
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to={`/zpravy/${id}`}
+        >
+          <div className="zprava-item">
+            <div className="image-box">
+              <img
+                className={i === 0 ? "zpravaPageImg" : "zprava-image"}
+                src={imgUrl}
+                alt={title.rendered}
+              />
+              <small>
+                Review by <strong>{author}</strong>
+              </small>
+            </div>
             <div className="zprava-box">
-            <img className="zprava-image" src={imgUrl} alt={title.rendered} />
-            <div className="zprava-text" dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
-            
+              <div className="zprava-link">{title.rendered}</div>
+
+              <div
+                className="zprava-text"
+                dangerouslySetInnerHTML={{ __html: excerpt.rendered }}
+              />
+            </div>
           </div>
-          <small>
-              Review by <strong>{author}</strong>
-            </small>
           <hr />
-        </div>
+        </Link>
       );
     }
 
